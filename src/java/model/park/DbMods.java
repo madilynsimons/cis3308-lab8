@@ -19,6 +19,7 @@ public class DbMods {
 
         // Validation
         errorMsgs.name = ValidationUtils.stringValidationMsg(inputData.name, 45, true);
+        errorMsgs.image = ValidationUtils.stringValidationMsg(inputData.image, 200, false);
         errorMsgs.description = ValidationUtils.stringValidationMsg(inputData.description, 1000, true);
 
         errorMsgs.rating = ValidationUtils.decimalValidationMsg(inputData.rating, false);
@@ -45,7 +46,7 @@ public class DbMods {
                     "FROM web_user, user_role where web_user.user_role_id = user_role.user_role_id " + 
                     "ORDER BY web_user_id ";
              */
-            String sql = "UPDATE park SET name=?, description=?, rating=?, cost=? "
+            String sql = "UPDATE park SET name=?, image=?, description=?, rating=?, cost=? "
                     + "WHERE park_id = ?";
 
             // PrepStatement is Sally's wrapper class for java.sql.PreparedStatement
@@ -55,10 +56,11 @@ public class DbMods {
 
             // Encode string values into the prepared statement (wrapper class).
             pStatement.setString(1, inputData.name); // string type is simple
-            pStatement.setString(2, inputData.description);
-            pStatement.setBigDecimal(3, ValidationUtils.decimalConversion(inputData.rating));
-            pStatement.setBigDecimal(4, ValidationUtils.decimalConversion(inputData.cost));
-            pStatement.setInt(5, ValidationUtils.integerConversion(inputData.parkId));
+            pStatement.setString(2, inputData.image);
+            pStatement.setString(3, inputData.description);
+            pStatement.setBigDecimal(4, ValidationUtils.decimalConversion(inputData.rating));
+            pStatement.setBigDecimal(5, ValidationUtils.decimalConversion(inputData.cost));
+            pStatement.setInt(6, ValidationUtils.integerConversion(inputData.parkId));
 
             // here the SQL statement is actually executed
             int numRows = pStatement.executeUpdate();
