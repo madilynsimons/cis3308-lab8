@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!-- Use this type of comment within HTML -->
+        <title>[Title of YOUR web site]</title>
+
+        <link href="style/commonStyle.css" rel="stylesheet" type="text/css" />  
+        <link href="style/darkTitleStyle.css" rel="stylesheet" type="text/css" />  
+        <link href="style/clickSort.css" rel="stylesheet" type="text/css" /> 
+        <link href="style/modalStyle.css" rel="stylesheet" type="text/css" /> 
+        <link href="style/insertStyle.css" rel="stylesheet" type="text/css" />  
+
+        <link rel="shortcut icon" href="icons/favicon.ico">
+
+    </head>
+    <body>
+
+        <div id="titleNav">
+
+            <div id="pageTitle">
+                Website Title
+            </div>
+
+        </div>  <!-- end of titleNav (keep track of nesting) -->
+
+        <div id="content">
+        </div> <!-- content. -->
+
+        <div id="footer">
+            [ your name goes here ]
+        </div>
+
+        <script src="js/Utils.js"></script>
+        <script src="js/ajax2.js"></script>  
+        <script src="js/components/users.js"></script>
+
+        <script>
+            "use strict";
+            
+            // first parameter is "hard coding" the example to edit web user #4.
+            users.updateUI(4,"content");
+        </script>
+    </body>
+</html>

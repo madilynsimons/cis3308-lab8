@@ -1,0 +1,55 @@
+/* To implement dropdowns, we have three styling elements (that are also referenced by the 
+*  associated JS code): 
+*
+*    - dropdown: a div that bundles a dropdown header with associated dropdown content
+*    - dropHeader: visible upon first rendering. when you click on a drop header, 
+*          its related content will open up.
+*    - dropContent: initially hidden, but becomes visible when the dropHeader is clicked.
+*/
+
+/* The framework does not reference class dropdown, so you can name this as you wish. but you do need 
+ * this class for styling and to bundle the dropHeader to the dropContent */
+.dropdown {
+    /* Assign "position relative" to the class that bundles dropHeader elements with dropContent elements. 
+    You need something that is not static (the default positioning) so that its "position absolute" children 
+    will be positioned with reference to their (non-static) parent.  Of the four positions, only relative 
+    and static retain their space in the normal flow. The other two (fixed and absolute) are removed from 
+    the normal flow and then positioned w.r.t. to the browsers edges (fixed) or w.r.t. the edges of its first 
+    non-static parent. */
+    position: relative;  
+
+    /* divs are positioned/treated like words or spanned elements instead of like block/paragraph elements */
+    display: inline-block;
+
+    /* a little space between drop down group header entries */
+    margin-right: 1ex;
+
+    /* Let's users know that something will happen with they click on things in the drop down group */
+    cursor: pointer;
+}
+
+
+/* don't delete this even though there are no style rules - js needs it, references it. */
+.dropHeader {
+
+}
+
+.dropContent {
+    background-color:black;
+
+    right:0px;
+    position: absolute;
+    font-size: 14px;
+    z-index: 3;
+
+    padding: 8px;
+    line-height: 1.7em;
+    border-radius: 8px;
+    letter-spacing: 1px;
+
+    right: -500px;  /* places the element off screen to the right */
+    visibility: hidden; /* initially you cannot see the dropContent elements */
+
+    /* animate the change of the right property when clicked (zooms in from right but slowly)*/
+    transition: right 0.5s ease 0s;
+}

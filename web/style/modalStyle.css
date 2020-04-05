@@ -1,0 +1,43 @@
+
+/* Modal Content */
+.modalStyle {
+    position:fixed;
+    z-index: 4; /* make sure it's on top */
+    
+    max-height: 200px;
+    overflow-y: auto; /* Enable vertical scroll if needed */
+
+    left: 5%;
+    width: 85%;
+    
+    padding: 20px;
+    padding-top: 10px;
+    
+    border-radius: 8px; 
+    background-color: white;
+    box-shadow: 5px 5px 5px black;
+    
+    /* animate the change of the top property which is used to control if we see it or not */
+    transition: top 0.5s ease 0s; 
+}
+
+/* The Close Button, looks like "X" */
+.modalStyle .x {
+    float: right;
+    color: black; 
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 2ex;
+}
+
+.modalStyle .x:hover {
+    cursor: pointer;
+}
+
+.modalStyle .buttonArea {
+    float: right;
+}
+
+.modalStyle INPUT {
+    margin-left: 1ex;
+}

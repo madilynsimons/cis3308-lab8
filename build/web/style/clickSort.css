@@ -1,0 +1,40 @@
+/*
+
+This style sheet exists to style HTML tables built for data display. To have this styling kick in, 
+the HTML data table should be placed inside of an element (e.g., div) that is styled class="data".
+
+*/
+
+.data {
+    text-align:center;
+}
+
+.data table {
+    margin:auto;     /* auto makes left and right margins the same, means centered */
+    margin-top: 1em; /* em means size of capital M */
+    background-color: #F8F8F8;
+}
+
+.data td {
+    padding: 4px 1px;  /* first param is top/bottom, second is left/right */
+    background-color: #fffff8; /* lighter beige */
+    font-size:13px;
+}
+
+.data th {  /* style of td elements that are inside of a thead element */
+    padding:4px;
+    padding-top:8px;
+    background-color: darkgrey;
+    font-weight: bold;
+    font-size:16px;
+    white-space: nowrap; /* do not want multi word column headings (or sort icon) to wrap */
+}
+
+.data td img {
+
+    border-radius: 5px;
+}
+
+.data h2 {
+    text-align: center;
+}
