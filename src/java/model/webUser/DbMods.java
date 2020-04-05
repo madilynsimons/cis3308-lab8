@@ -66,6 +66,7 @@ public class DbMods {
             errorMsgs.userPassword2 = "Both passwords must match";
         }
 
+        errorMsgs.image = ValidationUtils.stringValidationMsg(inputData.image, 200, false);
         errorMsgs.birthday = ValidationUtils.dateValidationMsg(inputData.birthday, false);
         errorMsgs.membershipFee = ValidationUtils.decimalValidationMsg(inputData.membershipFee, false);
         errorMsgs.userRoleId = ValidationUtils.integerValidationMsg(inputData.userRoleId, true);
@@ -143,7 +144,7 @@ public class DbMods {
                     "FROM web_user, user_role where web_user.user_role_id = user_role.user_role_id " + 
                     "ORDER BY web_user_id ";
              */
-            String sql = "UPDATE web_user SET user_email=?, user_password=?, membership_fee=?, birthday=?, "
+            String sql = "UPDATE web_user SET user_email=?, user_password=?, image=?, membership_fee=?, birthday=?, "
                     + "user_role_id=? WHERE web_user_id = ?";
 
             // PrepStatement is Sally's wrapper class for java.sql.PreparedStatement
@@ -154,10 +155,11 @@ public class DbMods {
             // Encode string values into the prepared statement (wrapper class).
             pStatement.setString(1, inputData.userEmail); // string type is simple
             pStatement.setString(2, inputData.userPassword);
-            pStatement.setBigDecimal(3, ValidationUtils.decimalConversion(inputData.membershipFee));
-            pStatement.setDate(4, ValidationUtils.dateConversion(inputData.birthday));
-            pStatement.setInt(5, ValidationUtils.integerConversion(inputData.userRoleId));
-            pStatement.setInt(6, ValidationUtils.integerConversion(inputData.webUserId));
+            pStatement.setString(3, inputData.image);
+            pStatement.setBigDecimal(4, ValidationUtils.decimalConversion(inputData.membershipFee));
+            pStatement.setDate(5, ValidationUtils.dateConversion(inputData.birthday));
+            pStatement.setInt(6, ValidationUtils.integerConversion(inputData.userRoleId));
+            pStatement.setInt(7, ValidationUtils.integerConversion(inputData.webUserId));
 
             // here the SQL statement is actually executed
             int numRows = pStatement.executeUpdate();

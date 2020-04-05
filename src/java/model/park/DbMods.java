@@ -25,6 +25,7 @@ public class DbMods {
         errorMsgs.rating = ValidationUtils.decimalValidationMsg(inputData.rating, false);
         errorMsgs.cost = ValidationUtils.decimalValidationMsg(inputData.cost, false);
         
+        errorMsgs.webUserId = ValidationUtils.integerValidationMsg(inputData.webUserId, true);
         errorMsgs.parkId = ValidationUtils.integerValidationMsg(inputData.parkId, true);
 
         return errorMsgs;
@@ -46,7 +47,7 @@ public class DbMods {
                     "FROM web_user, user_role where web_user.user_role_id = user_role.user_role_id " + 
                     "ORDER BY web_user_id ";
              */
-            String sql = "UPDATE park SET name=?, image=?, description=?, rating=?, cost=? "
+            String sql = "UPDATE park SET name=?, image=?, description=?, rating=?, cost=?, web_user_id=? "
                     + "WHERE park_id = ?";
 
             // PrepStatement is Sally's wrapper class for java.sql.PreparedStatement
@@ -60,7 +61,8 @@ public class DbMods {
             pStatement.setString(3, inputData.description);
             pStatement.setBigDecimal(4, ValidationUtils.decimalConversion(inputData.rating));
             pStatement.setBigDecimal(5, ValidationUtils.decimalConversion(inputData.cost));
-            pStatement.setInt(6, ValidationUtils.integerConversion(inputData.parkId));
+            pStatement.setInt(6, ValidationUtils.integerConversion(inputData.webUserId));
+            pStatement.setInt(7, ValidationUtils.integerConversion(inputData.parkId));
 
             // here the SQL statement is actually executed
             int numRows = pStatement.executeUpdate();
