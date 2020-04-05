@@ -54,6 +54,21 @@ public class FormatUtils {
             }
         }
     } // formatInteger
+    
+    public static String formatDouble(Object obj){
+        if (obj == null) {
+            return "";
+        } else {
+            try {
+                BigDecimal bdval = (BigDecimal) obj;
+                Double dval = bdval.doubleValue();
+                DecimalFormat dblFormat = new DecimalFormat("###,###,###,##0.0");
+                return dblFormat.format(dval);
+            } catch (Exception e) {
+                return "bad Double in FormatUtils:" + obj.toString() + " Error:" + e.getMessage();
+            }
+        }
+    } // formatDouble
 
     // plainInteger returns integer converted to string with no commas.
     public static String plainInteger(Object obj) {
